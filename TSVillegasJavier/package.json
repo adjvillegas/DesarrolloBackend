@@ -1,0 +1,21 @@
+{
+  "name": "tsvillegasjavier",
+  "version": "1.0.0",
+  "description": "Desafio TypesCript para CoderHouse",
+  "main": "operaciones.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adjvillegas"
+  },
+  "keywords": [
+    "typescript"
+  ],
+  "author": "Javier Villegas",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  }
+}

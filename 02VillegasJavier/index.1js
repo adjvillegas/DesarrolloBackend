@@ -1,0 +1,36 @@
+document.addEventListener("DOMContentLoaded",() => {
+    let inp = document.querySelector('#inp')
+    let txt = document.querySelector('#text')
+ 
+    const { Observable, interval, fromEvent } = rxjs;
+    const { filter, map } = rxjs.operators;
+ 
+   
+ 
+    
+ 
+    //Creamos un observable a partir de la escucha de tipeado del input
+    const observable = fromEvent(inp, 'keyup').pipe(map (evnt => evnt.target.value.split('').reverse().join('')));
+ 
+          // observable = interval(1000)
+ 
+ 
+ 
+    const observer = {
+       next: evnt => txt.innerText = evnt,
+       error: err => console.log('soy un error', err),
+       complete: () => console.log('Soun un completado')
+ 
+    }
+ 
+    //Nos suscribimos al observable
+    const subscription = observable.subscribe(observer);
+ 
+    setTimeout(() => {
+       debugger
+       subscription.unsubscribe();
+    },30000)
+ 
+ });
+ 
+ 
