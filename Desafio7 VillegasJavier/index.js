@@ -5,6 +5,7 @@
 //npm i --save-dev @babel/preset-env
 //npm i express
 const  express = require('express');
+const fs = require('fs');
 
 const app = express();
 
@@ -35,6 +36,8 @@ const oObject = {
     cantidad: 22
 }
 
+let visitas = {items: 0, item: 0}
+
 const server = app.listen(puerto, () => {
     console.log(`Escuchando en el puerto ${puerto}`)
 } );
@@ -45,12 +48,33 @@ app.get('/', (req, res) => {
 })
 
 app.get('/items', (req, res) => {
+    visitas.items = visitas.items + 1
     res.json(oObject);
 })
 
 app.get('/item-random', (req, res) => {
     
-    let randomId = Math.floor(Math.random() * ((oObject.items.length + 0) - 1));
-    res.json(`Mi objeto ${randomId} = ${oObject.items[randomId]}`);
+    visitas.item = visitas.item + 1
 
+     fs.promises.readFile("./productos.txt", "utf-8")
+                .then( contenido => {
+                    let object = []
+                    let splitter = contenido.toString().split('\r\n')
+                    for (let i = 0; i < splitter.length; i++) {
+                        object.push(splitter[i])
+                    }
+
+                    let randomId = Math.floor(Math.random() * ((oObject.items.length + 0) - 1));
+                    
+                    res.json(object[randomId])
+                })
+                .catch(err => {
+                    res.send(err)
+                })
+
+})
+
+
+app.get('/visitas', (req, res) => {
+    res.send(visitas)
 })
