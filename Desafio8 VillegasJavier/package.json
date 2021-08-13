@@ -5,12 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "babel-node index.js",
+    "dev": "babel-node app.js",
     "start": "nodemon --exec npm run dev"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/adjvillegas/DesarrolloBackend.git/Desafio8 VillegasJavier/"
   },
   "keywords": [
     "backend"
