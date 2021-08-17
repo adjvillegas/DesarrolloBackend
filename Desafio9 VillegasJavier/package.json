@@ -1,0 +1,26 @@
+{
+  "name": "desafio8",
+  "version": "1.0.0",
+  "description": "Desafio 8 Array de Productos",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel-node app.js",
+    "start": "nodemon --exec npm run dev"
+  },
+  "keywords": [
+    "backend"
+  ],
+  "author": "Javier Villegas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.12"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.15.0",
+    "@babel/node": "^7.14.9",
+    "@babel/preset-env": "^7.15.0"
+  }
+}
