@@ -21,6 +21,16 @@ class Items {
         this.Items.push({"id": this.getId(), "title": title, "price": price, "thumbnail": thumbnail});
 
     };
+
+    update = (id, modify) => {
+
+        console.log(modify)
+
+    }
+
+    delete = (id) => {
+        return this.Items.splice(id, 1)
+    }
 }
 
 module.exports = Items;

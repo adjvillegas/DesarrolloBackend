@@ -1,43 +1,35 @@
-const express = require('express');
+const express = require('express')
+const routerApi = express.Router()
 
-const Items = require('./itemsClass/items');
+const Items = require('../itemsClass/items');
 const items = new Items();
 
-const app = express();
+routerApi.use(express.json());
+routerApi.use(express.text());
+routerApi.use(express.urlencoded({extended: true}))
 
-app.use(express.json());
-app.use(express.text());
-app.use(express.urlencoded({extended: true}))
-
-const server = app.listen(8080, () => {
-    console.log("Escuchando en el puerto 8080")
-});
-
-// Todo se responde en formato JSON --> Debe andar en POSTMAN
 //    Devuelve array de productos --> Si no existen devuelve error
-app.get('/api/productos/listar', (req, res) => {
+routerApi.get('/productos/listar', (req, res) => {
   
     if (items.isHasExist()) {
         res.json(items.Items)
     } else  res.json({error: `no hay productos cargados`})
-    // 
-
+    
 });
 
 // Lista en forma individual --> Si no existe devuelve error
-app.get('/api/productos/listar/:id', (req, res) => {
+routerApi.get('/productos/listar/:id', (req, res) => {
 
     let listar = items.listar(req.params.id)
-    
+
     if (listar) {
         res.json(listar)
     } else res.json({error: 'Producto no cargado'})
 
 });
 
-
 // Almacena un producto --> Devuelve el producto guardado
-app.post('/api/productos/guardar', (req, res) => {
+routerApi.post('/productos/guardar', (req, res) => {
 
         if ( req.body.title !== undefined && 
              req.body.price !== undefined && 
@@ -51,5 +43,12 @@ app.post('/api/productos/guardar', (req, res) => {
 
 });
 
+routerApi.put('/productos/actualizar/:id', (req, res) => {
+    items.update(req.params.id)
+})
 
-server.on("error", err => console.error(`Error en servidor ${error}`));
+routerApi.delete('/productos/borrar/:id', (req, res) => {
+    res.json(items.delete(req.params.id, res.body))
+})
+
+module.exports = routerApi;
