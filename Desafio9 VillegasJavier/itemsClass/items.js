@@ -3,17 +3,17 @@ class Items {
         this.Items = [];
     };
 
-    isHasExist = () => {
-        return (this.Items.length > 0);
-    };
+    isHasExist = () => (this.Items.length > 0);
 
-    getId = () => {
-        return this.Items.length || 0;
-    };
+    searchIndexOf = id => this.Items.findIndex( item => item.id === parseInt(id) );
+    
+    getId = () => this.Items.length || 0;
 
     listar = (id) => {
 
-        return (this.Items[id]);
+        let current = this.searchIndexOf(id)
+
+        return (this.Items[current]);
     };
 
     guardar = (title, price, thumbnail) => {
@@ -22,14 +22,24 @@ class Items {
 
     };
 
-    update = (id, modify) => {
+    update = (id, data) => {
+        let current = this.searchIndexOf(id);
 
-        console.log(modify)
-
+        this.Items.map( (item, indx) => {
+            if (indx === current) {
+                for (let element in data) {
+                    item[element] = data[element];
+                }
+            }
+        })
     }
 
     delete = (id) => {
-        return this.Items.splice(id, 1)
+
+        let current = this.searchIndexOf(id)
+
+        return this.Items.splice(current,1)
+
     }
 }
 

@@ -1,24 +1,25 @@
 const express = require('express')
-const routerApi = express.Router()
+const router = express.Router()
 
 const Items = require('../itemsClass/items');
 const items = new Items();
 
-routerApi.use(express.json());
-routerApi.use(express.text());
-routerApi.use(express.urlencoded({extended: true}))
+router.use(express.json());
+router.use(express.text());
+router.use(express.urlencoded({extended: true}))
 
 //    Devuelve array de productos --> Si no existen devuelve error
-routerApi.get('/productos/listar', (req, res) => {
+router.get('/productos/listar', (req, res) => {
   
     if (items.isHasExist()) {
         res.json(items.Items)
     } else  res.json({error: `no hay productos cargados`})
-    
+    // 
+
 });
 
 // Lista en forma individual --> Si no existe devuelve error
-routerApi.get('/productos/listar/:id', (req, res) => {
+router.get('/productos/listar/:id', (req, res) => {
 
     let listar = items.listar(req.params.id)
 
@@ -29,26 +30,33 @@ routerApi.get('/productos/listar/:id', (req, res) => {
 });
 
 // Almacena un producto --> Devuelve el producto guardado
-routerApi.post('/productos/guardar', (req, res) => {
+router.post('/productos/guardar', (req, res) => {
 
-        if ( req.body.title !== undefined && 
-             req.body.price !== undefined && 
-             req.body.thumbnail !== undefined) {
-        
-            items.guardar(req.body.title, req.body.price, req.body.thumbnail);
+    if ( req.body.title !== undefined && 
+         req.body.price !== undefined && 
+         req.body.thumbnail !== undefined) {
+    
+        items.guardar(req.body.title, req.body.price, req.body.thumbnail);
 
-            res.json(items.Items);
+        res.json(items.Items);
 
-        } else res.json({error: 'Error al guardar'});
+    } else res.json({error: 'Error al guardar'});
 
 });
 
-routerApi.put('/productos/actualizar/:id', (req, res) => {
-    items.update(req.params.id)
+router.put('/productos/actualizar/:id', (req, res) => {
+
+    try {
+        items.update(req.params.id, req.body)
+        res.json({success: 'Modificado'});
+    } catch (error) {
+        res.json({error: 'no se guardo'})
+    }
+        
 })
 
-routerApi.delete('/productos/borrar/:id', (req, res) => {
-    res.json(items.delete(req.params.id, res.body))
+router.delete('/productos/borrar/:id', (req, res) => {
+    res.json(items.delete(req.params.id));
 })
 
-module.exports = routerApi;
+module.exports = router;
