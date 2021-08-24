@@ -1,0 +1,13 @@
+<h1>Visualizar Productos</h1>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Precio</th>
+    </tr>
+   {{#each productos }}
+    <tr>
+        <td>{{this.name}}</td>
+        <td>{{this.precio}}</td>
+    </tr>
+   {{/each}}
+</table>
