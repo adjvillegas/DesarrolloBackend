@@ -1,13 +1,19 @@
 <h1>Visualizar Productos</h1>
-<table>
+<table class="table">
+    <thead>
     <tr>
         <th>Nombre</th>
         <th>Precio</th>
-    </tr>
+        <th>Imagen</th>        
+    </tr>        
+    </thead>
+  <tbody>
    {{#each productos }}
     <tr>
-        <td>{{this.name}}</td>
-        <td>{{this.precio}}</td>
+        <td>{{this.title}}</td>
+        <td>{{this.price}}</td>
+        <td>{{this.thumbnail}}</td>      
     </tr>
    {{/each}}
+   </tbody>
 </table>

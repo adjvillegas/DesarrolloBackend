@@ -1,15 +1,18 @@
-    <form action="http://localhost:8080/api/productos/guardar" method="post">
+    <div class="container-fluid mt-5">
+      <div class="row row-cols-3 justify-content-center">
+    <form>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="title">
+            <input type="text" class="form-control" id="exampleInputTitle" aria-describedby="titleHelp" name="title">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Precio</label>
-            <input type="number" class="form-control" id="exampleInputPassword1" name="price">
+            <input type="number" class="form-control" id="exampleInputPrecio" name="price">
           </div>
-          <div class="mb-3 form-check">
-            <label for="exampleInputPassword1" class="form-label">thumbnail</label>
-            <input type="text" class="form-control" id="exampleInputPassword1" name="thumbnail">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="exampleInputThumbnail" name="thumbnail">
           </div>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <div class="mb-3 text-center">
+          <button type="submit" class="btn btn-primary" id="postGuardar" >Guardar</button>
+          </div>
     </form>
+    </div>
+    </div>

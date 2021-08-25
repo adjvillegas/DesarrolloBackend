@@ -22,6 +22,10 @@ app.engine("hbs",
 
 // app.use('/api', api)
 app.use(express.static('public'))
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded({extended: true}))
+
 
 app.get('/', (req, res) => {
     res.render("main",{listarProducto: false, crearProducto: false})
@@ -33,12 +37,6 @@ app.get('/productos/vista', (req, res) => {
         res.render("main", {productos: items.Items, listarProducto: true} )
     } else  res.json({error: `no hay productos cargados`})    
 
-})
-
-app.get('/productos/crear', (req, res) => {
-
-        res.render("main",{listarProducto: false, crearProducto: true})
- 
 })
 
 //    Devuelve array de productos --> Si no existen devuelve error
@@ -62,18 +60,26 @@ app.get('/productos/listar/:id', (req, res) => {
 
 });
 
+app.get('/productos/guardar', (req, res) => {
+
+    res.render("main",{listarProducto: false, crearProducto: true})
+
+})
+
 // Almacena un producto --> Devuelve el producto guardado
 app.post('/productos/guardar', (req, res) => {
 
-    if ( req.body.title !== undefined && 
-         req.body.price !== undefined && 
-         req.body.thumbnail !== undefined) {
+    let {title, price, thumbnail } = req.body;
+    if ( title !== undefined && 
+         price !== undefined && 
+         thumbnail !== undefined) {
     
-        items.guardar(req.body.title, req.body.price, req.body.thumbnail);
+        items.guardar(title, price, thumbnail);
 
-        res.json(items.Items);
+        res.json({success: `Guardaste`});
 
-    } else res.json({error: 'Error al guardar'});
+    } else res.json({error: `Error al guardar ${req.query.title}`});
+ 
 
 });
 
@@ -98,3 +104,5 @@ const server = app.listen(8080, () => {
 });
 
 server.on("error", err => console.error(`Error en servidor ${err}`));
+
+
