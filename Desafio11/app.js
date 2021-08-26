@@ -10,22 +10,22 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 
 app.set('views', './views');
-app.set('view engine', 'pug');
+// app.set('view engine', 'pug');
+app.set('view engine', 'ejs')
 
 
 app.get('/', (req, res) => {
-    res.render('index.pug', {message: 'Bienvenido al desafio 11 con PUG'})
+    // res.render('index.pug', {message: 'Bienvenido al desafio 11 con PUG'})
+    res.render('pages/index', {message: 'Bienvenido al desafio 11 con PUG'})    
 })
 
 app.get('/productos/vista', (req, res) => {
 
     try {
-        // if (items.Items.length) {
+
         res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: items.Items.length})
-        // res.json({myitem: items.Items, algo:items.Items.length})
-        // }         
+  
     } catch (error) {
-        // res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })
         res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })        
     }
 
