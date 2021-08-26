@@ -1,0 +1,11 @@
+div(class="container-fluid mt-5")
+    div(class="row row-cols-3 justify-content-center")
+        form(action="http://localhost:8080/productos/guardar", method="post")
+            div(class="mb-3")
+                input#exampleInputTitle(type="text", class="form-control", aria-describedby="titleHelp", name="title")
+            div(class="mb-3")
+                input#exampleInputPrecio(type="number", name="price", class="form-control")
+            div(class="mb-3")
+                input#exampleInputThumbnail(type="text", name="thumbnail", class="form-control")
+            div(class="mb-3 text-center")
+                button#postGuardar(type="submit", class="btn btn-primary")="Guardar"

@@ -1,0 +1,13 @@
+h1=message
+table(class="table")
+    thead 
+        tr
+            th='Nombre'
+            th='Precio'
+            th='Imagen'
+    tbody
+    each products in product
+        tr
+            td=product.title
+            td=product.price
+            td=product.thumbnail                        
