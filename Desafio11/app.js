@@ -19,7 +19,16 @@ app.get('/', (req, res) => {
 
 app.get('/productos/vista', (req, res) => {
 
-    res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get'} ) 
+    try {
+        // if (items.Items.length) {
+        res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: items.Items.length})
+        // res.json({myitem: items.Items, algo:items.Items.length})
+        // }         
+    } catch (error) {
+        // res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })
+        res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })        
+    }
+
 
 })
 

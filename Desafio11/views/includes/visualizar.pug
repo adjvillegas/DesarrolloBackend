@@ -1,13 +1,23 @@
-h1=message
-table(class="table")
-    thead 
-        tr
-            th='Nombre'
-            th='Precio'
-            th='Imagen'
-    tbody
-    each products in product
-        tr
-            td=product.title
-            td=product.price
-            td=product.thumbnail                        
+h1(class="text-center mt-5")=message
+case registros
+    when 0
+        h1(class="text-center mt-5")="No se encontraron Productos"       
+       
+    default
+        div(class="container")
+            div(class="row row-cols-6")
+                table(class="col table")
+                    thead 
+                        tr
+                            th='Nombre'
+                            th='Precio'
+                            th='Imagen'
+                    tbody
+                    each product in products 
+                        tr
+                            td=product.title
+                            td=product.price
+                            td
+                                img(src= product.thumbnail) 
+      
+
