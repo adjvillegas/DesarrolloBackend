@@ -22,8 +22,8 @@ app.post('/productos/guardar', (req, res) => {
     let { title, price, thumbnail } = req.body;
 
     if ( title !== undefined && 
-        price !== undefined && 
-        thumbnail !== undefined) {
+         price !== undefined && 
+         thumbnail !== undefined) {
    
             product.guardar(title, price, thumbnail);
             
@@ -32,7 +32,7 @@ app.post('/productos/guardar', (req, res) => {
 
    } 
 //    else     res.render('pages/index', {message: `No pudiste guardar ${title} ${price} ${thumbnail}`, view: 'home'}) 
-    res.render('pages/index', {message: 'Bienvenido al desafio 12 con WebSocket 1', registros: product.Items.length})
+    // res.render('pages/index', {message: 'Bienvenido al desafio 12 con WebSocket 1', registros: product.Items.length})
 })
 
 app.listen(PORT, () => {
