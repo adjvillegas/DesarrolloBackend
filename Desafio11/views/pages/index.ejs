@@ -10,7 +10,14 @@
 <body>
     <header>
         <%- include('../partials/navbar'); %>
-        <h1>Hola</h1>
     </header>
+    <main>
+        <h1 class="text-center mt-5"><%= message %></h1>
+        <% if ( view === "post") { %>
+            <%- include('../partials/create'); %>
+        <% } else if ( view === "get") { %>
+            <%- include('../partials/visualizar'); %>
+        <% } %>    
+    </main>
 </body>
 </html>

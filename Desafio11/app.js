@@ -16,24 +16,24 @@ app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     // res.render('index.pug', {message: 'Bienvenido al desafio 11 con PUG'})
-    res.render('pages/index', {message: 'Bienvenido al desafio 11 con PUG'})    
+    res.render('pages/index', {message: 'Bienvenido al desafio 11 con EJS', view: 'home'})    
 })
 
 app.get('/productos/vista', (req, res) => {
 
     try {
 
-        res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: items.Items.length})
+        res.render('pages/index', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: items.Items.length})
   
     } catch (error) {
-        res.render('index.pug', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })        
+        res.render('pages/index', {message: 'Visualizar Producto', products: items.Items, view: 'get', registros: false })        
     }
 
 
 })
 
 app.get('/productos/guardar', (req, res) => {
-    res.render('index.pug', {view: 'post'})
+    res.render('pages/index', {message: 'Cargar nuevo producto', view: 'post'})
 })
 
 app.post('/productos/guardar', (req, res) => {
@@ -45,9 +45,9 @@ app.post('/productos/guardar', (req, res) => {
    
        items.guardar(title, price, thumbnail);
 
-       res.render('index.pug', {message: `Guardaste Algo ${title} ${price} ${thumbnail}`})
+       res.render('pages/index', {message: `Guardaste Algo ${title} ${price} ${thumbnail}`, view: 'home'})
 
-   } else     res.render('index.pug', {message: `No pudiste guardar ${title} ${price} ${thumbnail}`}) 
+   } else     res.render('pages/index', {message: `No pudiste guardar ${title} ${price} ${thumbnail}`, view: 'home'}) 
 
 })
 

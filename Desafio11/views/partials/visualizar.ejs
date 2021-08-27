@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="row row-cols-6">
+        <% if ( registros < 1) { %>
+            <h1 class="col-12 text-center mt-5">No existen productos para visualizar</h1>
+        <% } else if ( registros > 1) { %>                   
+        <table class="col table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th>Imagen</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(function(product) { %>
+                <tr>
+                    <td><%= product.title %></td>
+                    <td><%= product.price %></td>
+                    <!-- <td><img src="" alt=""></td> -->
+                    <td>
+                        <img src=<%= product.thumbnail %> alt=<%= product.title %>>
+                    </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+        <% } %>          
+    </div>
+</div>
