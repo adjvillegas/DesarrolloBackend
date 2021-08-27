@@ -1,0 +1,19 @@
+<div class="container-fluid mt-5">
+    <div class="row row-cols-3 justify-content-center">
+        <form action="http://localhost:8080/productos/guardar" method="post">
+            <div class="mb-3">
+                <input type="text" class="form-control" id="exampleInputTitle" aria-describedby="titleHelp"
+                    name="title" placeholder="Descripción del Producto">
+            </div>
+            <div class="mb-3">
+                <input type="number" class="form-control" id="exampleInputPrecio" name="price" placeholder="Importe">
+            </div>
+            <div class="mb-3">
+                <input type="file" class="form-control" id="exampleInputThumbnail" name="thumbnail">
+            </div>
+            <div class="mb-3 text-center">
+                <button type="submit" class="btn btn-primary" id="postGuardar">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
