@@ -1,5 +1,5 @@
 const express = require('express');
-const Items = require('./itemsClass/items');
+const Items = require('./controller/items')
 
 const app = express();
 const product = new Items();
@@ -8,6 +8,7 @@ const PORT = 8080;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
+app.use(express.static(__dirname + '/public'));
 
 app.set('views', './views');
 app.set('view engine', 'ejs')
@@ -19,6 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/productos/guardar', (req, res) => {
+
     let { title, price, thumbnail } = req.body;
 
     if ( title !== undefined && 

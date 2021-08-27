@@ -1,3 +1,6 @@
+const Archivo = require('./archivo');
+const archivo = new Archivo();
+
 class Items {
     constructor () {
         this.Items = [];
