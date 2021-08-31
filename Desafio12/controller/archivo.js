@@ -11,17 +11,11 @@ class  Archivo {
 
     get = async() => {
 
-        let oFile = [];
 
         try {
-            // await fs.promises.readFile(this.url, 'utf-8')
-            await fs.promises.readFile(this.url, 'utf-8'
-            )            
-            .then( contenido => {
-                console.log(contenido.split('{'))
-            })
-            
-            return oFile;
+
+            const fileInfo = await fs.promises.readFile(this.url);
+            return JSON.parse(fileInfo.toString('utf-8'));
 
         } catch (error) {
 
@@ -34,25 +28,27 @@ class  Archivo {
     download = async( producto ) => {
 
         try {
+            
             const fileInfo = await fs.promises.readFile(this.url);
-            const producto = JSON.stringify(fileInfo.toString('utf-8'));
-            console.log('pase por aca 1')
-            producto.push({...producto[0], id: producto.length});
-            console.log('pase por aca 2')
+            const fileProducto = JSON.parse(fileInfo.toString('utf-8'));
+
+            fileProducto.push({...producto, id: fileProducto.length});
             
             try {
-                console.log('pase por aca 3')
-                await fs.promises.writeFile(this.url, JSON.stringify(producto, null, '\t'));
-                console.log('pase por aca 4')
+ 
+                await fs.promises.writeFile(this.url, JSON.stringify(fileProducto, null, '\t'));
+ 
             } catch (error) {
+
                 throw new Error(error)
+
             }
 
         } catch (error) {
             
             try {
-                
-                await fs.promises.writeFile(this.url, JSON.stringify([{ title: title, price: price, thumbnail: thumbnail, id: 0 }]));
+   
+                await fs.promises.writeFile(this.url, JSON.stringify([{ ...producto, id: 0 }]));
 
             } catch (error) {
 

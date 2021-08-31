@@ -20,15 +20,16 @@ class Items {
     // };
 
     getProducts = async () => {
-        let products = [] 
-        products.push(await archivo.get());
-        console.log(products)
+        
+        return await archivo.get();
+     
+    
     }
 
     saveProduct = async(title, price, thumbnail) => {
 
-        const currentProduct = {title: title, price: price, thumbnail: thumbnail}
-
+        const currentProduct = {"title": title, "price": price, "thumbnail": thumbnail}
+        console.log(`current product ${currentProduct}`)
         await archivo.download(currentProduct)
         // this.Items.push({"id": this.getId(), "title": title, "price": price, "thumbnail": thumbnail});
 
