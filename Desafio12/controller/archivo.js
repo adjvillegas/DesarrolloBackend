@@ -31,20 +31,35 @@ class  Archivo {
 
         }
 
-    download = async( title, price, thumbnail, id ) => {
-        console.log(`Archivo: ${title} ${price} ${thumbnail} ${id}`)
+    download = async( producto ) => {
+
         try {
-            await fs.promises.appendFile(
-                this.url, 
-                JSON.stringify({
-                    title: title,
-                    price: price,
-                    thumbnail: thumbnail,
-                    id: id
-                }))  
-   
+            const fileInfo = await fs.promises.readFile(this.url);
+            const producto = JSON.stringify(fileInfo.toString('utf-8'));
+            console.log('pase por aca 1')
+            producto.push({...producto[0], id: producto.length});
+            console.log('pase por aca 2')
+            
+            try {
+                console.log('pase por aca 3')
+                await fs.promises.writeFile(this.url, JSON.stringify(producto, null, '\t'));
+                console.log('pase por aca 4')
+            } catch (error) {
+                throw new Error(error)
+            }
+
         } catch (error) {
-            console.log('error')
+            
+            try {
+                
+                await fs.promises.writeFile(this.url, JSON.stringify([{ title: title, price: price, thumbnail: thumbnail, id: 0 }]));
+
+            } catch (error) {
+
+                throw new Error(error)
+
+            }
+
         }
 
     }

@@ -26,7 +26,10 @@ class Items {
     }
 
     saveProduct = async(title, price, thumbnail) => {
-        await archivo.download(title, price, thumbnail, 1)
+
+        const currentProduct = {title: title, price: price, thumbnail: thumbnail}
+
+        await archivo.download(currentProduct)
         // this.Items.push({"id": this.getId(), "title": title, "price": price, "thumbnail": thumbnail});
 
     };
