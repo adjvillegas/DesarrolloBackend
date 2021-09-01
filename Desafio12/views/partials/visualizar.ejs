@@ -1,29 +1,7 @@
 <div class="container">
     <div class="row row-cols-6">
-        <% if ( registros < 1) { %>
+
             <h1 class="col-12 text-center mt-5">No existen productos para visualizar</h1>
-        <% } else if ( registros > 0) { %>                   
-        <table class="col table">
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Precio</th>
-                    <th>Imagen</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% products.forEach(function(product) { %>
-                <tr>
-                    <td><%= product.title %></td>
-                    <td><%= product.price %></td>
-                    <!-- <td><img src="" alt=""></td> -->
-                    <td>
-                        <img src="uploads\\2137820_food_fruit_orange_organic_vegan_icon.png-1630425491167" alt=<%= product.title %>>
-                    </td>
-                </tr>
-                <% }); %>
-            </tbody>
-        </table>
-        <% } %>          
+       
     </div>
 </div>

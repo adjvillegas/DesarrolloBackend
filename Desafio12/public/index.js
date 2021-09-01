@@ -1,23 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    document.getElementById('InputCreateTitle').addEventListener('keypress', (oEvent) => {
-        checkValueParams(oEvent)
+    const socket = io();
+
+    socket.on('mensaje', data => {
+        debugger
     })
 
+    socket.on('response', data => {
+        debugger
+    })
 
-    checkValueParams = (oEvent) => {
-        
-        switch (oEvent.target.name) {
-            case 'number':
-                
-                if (isNaN(oEvent.key) == true || /^[0-9]) {}
+    document.getElementById('formCreate').addEventListener('submit', (oEvent) => {
+        oEvent.preventDefault()
+        debugger
+        var data = { title: document.getElementById('InputCreateTitle').value, price: parseInt(document.getElementById('exampleInputPrecio').value), thumbnail: document.getElementsByName('thumbnail')[0]}
 
-                break;
-        
-            default:
-                break;
-        }
+        socket.emit('refresh', data)
+    })
 
-        console.log("asdasd")
-    };
 });

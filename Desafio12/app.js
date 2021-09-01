@@ -1,9 +1,17 @@
+
 const express = require('express');
-const Items = require('./controller/items');
 const multer = require("multer");
+
+
+const Items = require('./controller/items');
+
 // const Archivo = require('./controller/archivo');
 
 const app = express();
+
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+
 const oProduct = new Items();
 // const oArchivo = new Archivo();
 
@@ -30,20 +38,22 @@ app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
-    const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
+    // const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
 
-    fnGetProducts().then( products => {
-        res.render('pages/index', { 
-            message: 'Bienvenido al desafio 12 con WebSocket 1',
-            products: products,
-            registros: products.length
-        })
-    })
+    // fnGetProducts().then( products => {
+    //     res.render('pages/index', { 
+    //         message: 'Bienvenido al desafio 12 con WebSocket 1',
+    //         products: products,
+    //         registros: products.length
+    //     })
+    // })
+
+    res.render('pages/index')
 
 });
 
 app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
-
+    
     if (!req.body.title || !req.body.price || !req.body.thumbnail) {
 
         if (!req.file) {
@@ -51,7 +61,7 @@ app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
             error.httpStatusCode = 400;
             return next(error)
         } else if (!req.body.title || !req.body.price) {
-            const error = new Error(`Datos incompletos titulo: ${req.body.title} pice: ${req.body.price } thumbnail: ${req.body.thumbnail}`);
+            const error = new Error(`Datos incompletos titulo: ${req.body.title} pice: ${req.body.price} thumbnail: ${req.body.thumbnail}`);
             error.httpStatusCode = 400;
             return next(error)
         }
@@ -59,10 +69,11 @@ app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
 
     let { title, price } = req.body;
 
-    oProduct.saveProduct( title, price, req.file);
 
-    res.send(title, price, req.file);
-    
+    oProduct.saveProduct(title, price, req.file);
+
+    res.json({termino: true});
+
 });
 
 app.get('/error', (req, res, next) => {
@@ -74,6 +85,21 @@ app.get('/error', (req, res, next) => {
 
 })
 
-app.listen(PORT, () => {
+// app.listen(PORT, () => {
+//     console.log(`Server iniciado en http://localhost:${PORT}/`)
+// });
+http.listen(PORT, () => {
     console.log(`Server iniciado en http://localhost:${PORT}/`)
 });
+
+io.on('connection', (socket) => {
+    console.log('connection')
+    socket.on('refresh', data => {
+        console.log('refresh 1')
+        const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
+        const response = fnGetProducts().then( products => products )
+        console.log(response)
+        io.sockets.emit('response', response)
+    })
+
+})

@@ -2,46 +2,21 @@
 	{
 		"title": "Naranja",
 		"price": "12",
-		"thumbnail": {
-			"fieldname": "thumbnail",
-			"originalname": "2137820_food_fruit_orange_organic_vegan_icon.png",
-			"encoding": "7bit",
-			"mimetype": "image/png",
-			"destination": "uploads",
-			"filename": "2137820_food_fruit_orange_organic_vegan_icon.png-1630425491167",
-			"path": "uploads\\2137820_food_fruit_orange_organic_vegan_icon.png-1630425491167",
-			"size": 2895
-		},
 		"id": 0
 	},
 	{
-		"title": "Banana",
-		"price": "9",
-		"thumbnail": {
-			"fieldname": "thumbnail",
-			"originalname": "2137829_banana_food_fruit_organic_vegan_icon.png",
-			"encoding": "7bit",
-			"mimetype": "image/png",
-			"destination": "uploads",
-			"filename": "2137829_banana_food_fruit_organic_vegan_icon.png-1630425507471",
-			"path": "uploads\\2137829_banana_food_fruit_organic_vegan_icon.png-1630425507471",
-			"size": 2295
-		},
+		"title": "Naranja",
+		"price": "12",
 		"id": 1
 	},
 	{
-		"title": "Reloj",
-		"price": "567",
-		"thumbnail": {
-			"fieldname": "thumbnail",
-			"originalname": "2824441_clock_stopwatch_time_timer_icon.png",
-			"encoding": "7bit",
-			"mimetype": "image/png",
-			"destination": "uploads",
-			"filename": "2824441_clock_stopwatch_time_timer_icon.png-1630429710786",
-			"path": "uploads\\2824441_clock_stopwatch_time_timer_icon.png-1630429710786",
-			"size": 3254
-		},
+		"title": "Naranja",
+		"price": "12",
 		"id": 2
+	},
+	{
+		"title": "Naranja",
+		"price": "12",
+		"id": 3
 	}
 ]

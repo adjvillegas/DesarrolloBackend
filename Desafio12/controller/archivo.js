@@ -37,6 +37,7 @@ class  Archivo {
             try {
  
                 await fs.promises.writeFile(this.url, JSON.stringify(fileProducto, null, '\t'));
+
  
             } catch (error) {
 
@@ -51,7 +52,7 @@ class  Archivo {
                 await fs.promises.writeFile(this.url, JSON.stringify([{ ...producto, id: 0 }]));
 
             } catch (error) {
-
+   
                 throw new Error(error)
 
             }
