@@ -1,9 +1,11 @@
 
 const express = require('express');
-const multer = require("multer");
+
+const producto = []
+// const multer = require("multer");
 
 
-const Items = require('./controller/items');
+// const Items = require('./controller/items');
 
 // const Archivo = require('./controller/archivo');
 
@@ -12,22 +14,22 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
-const oProduct = new Items();
+// const oProduct = new Items();
 // const oArchivo = new Archivo();
 
 const PORT = 8080;
 
-let storage = multer.diskStorage({
-    destination: function (req, file, callback) {
-        callback(null, "uploads");
+// let storage = multer.diskStorage({
+//     destination: function (req, file, callback) {
+//         callback(null, "uploads");
 
-    },
-    filename: function (req, file, callback) {
-        callback(null, file.originalname + "-" + Date.now())
-    }
-})
+//     },
+//     filename: function (req, file, callback) {
+//         callback(null, file.originalname + "-" + Date.now())
+//     }
+// })
 
-let upload = multer({ storage });
+// let upload = multer({ storage });
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -52,38 +54,38 @@ app.get('/', (req, res) => {
 
 });
 
-app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
+// app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
     
-    if (!req.body.title || !req.body.price || !req.body.thumbnail) {
+//     if (!req.body.title || !req.body.price || !req.body.thumbnail) {
 
-        if (!req.file) {
-            const error = new Error("Sin archivos");
-            error.httpStatusCode = 400;
-            return next(error)
-        } else if (!req.body.title || !req.body.price) {
-            const error = new Error(`Datos incompletos titulo: ${req.body.title} pice: ${req.body.price} thumbnail: ${req.body.thumbnail}`);
-            error.httpStatusCode = 400;
-            return next(error)
-        }
-    }
+//         if (!req.file) {
+//             const error = new Error("Sin archivos");
+//             error.httpStatusCode = 400;
+//             return next(error)
+//         } else if (!req.body.title || !req.body.price) {
+//             const error = new Error(`Datos incompletos titulo: ${req.body.title} pice: ${req.body.price} thumbnail: ${req.body.thumbnail}`);
+//             error.httpStatusCode = 400;
+//             return next(error)
+//         }
+//     }
 
-    let { title, price } = req.body;
-
-
-    oProduct.saveProduct(title, price, req.file);
-
-    res.json({termino: true});
-
-});
-
-app.get('/error', (req, res, next) => {
-
-    return next(new Error('Error...'));
-    res.status(500);
-    res.render('error', { error: err });
+//     let { title, price } = req.body;
 
 
-})
+//     oProduct.saveProduct(title, price, req.file);
+
+//     res.json({termino: true});
+
+// });
+
+// app.get('/error', (req, res, next) => {
+
+//     return next(new Error('Error...'));
+//     res.status(500);
+//     res.render('error', { error: err });
+
+
+// })
 
 // app.listen(PORT, () => {
 //     console.log(`Server iniciado en http://localhost:${PORT}/`)
@@ -93,13 +95,15 @@ http.listen(PORT, () => {
 });
 
 io.on('connection', (socket) => {
-    console.log('connection')
-    socket.on('refresh', data => {
-        console.log('refresh 1')
-        const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
-        const response = fnGetProducts().then( products => products )
-        console.log(response)
-        io.sockets.emit('response', response)
-    })
+
+    socket.emit('index', { producto })
+    
+    // socket.on('refresh', data => {
+    //     console.log('refresh 1')
+    //     const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
+    //     const response = fnGetProducts().then( products => products )
+    //     console.log(response)
+    //     io.sockets.emit('response', response)
+    // })
 
 })

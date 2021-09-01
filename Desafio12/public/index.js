@@ -1,9 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const socket = io();
-
-    socket.on('mensaje', data => {
-        debugger
+    const visualization = document.getElementById('template_visualization')
+    socket.on('index', data => {
+        const template = ejs.compile(visualization.innerHTML);
+        template({producto: [{title: "Hola", price: 12}]})
     })
 
     socket.on('response', data => {
