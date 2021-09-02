@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css'
         integrity='sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We' crossorigin='anonymous' />
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="index.js"></script>
     <title>Desafio 12 con WebSocket 1</title>
 
 </head>
@@ -22,16 +20,21 @@
             <h2 class="text-center mt-5">Ingrese datos</h2>
             <%- include('../partials/create'); %>
         </article>
-        <article>
+        <!-- <article>
             <h2>Visualizar registros</h2>
             <div class="container">
                 <div class="row row-cols-6">
                     <script type="text/html" id="template_visualization">                                
-                    <%- include('../partials/visualizar'); %>
-                </script>                       
+                        <ul>
+                            <% producto.forEach(e => { %>
+                                <li><%= e.title %></li>
+                            }) %>
+                        </ul>
+                </script> 
+                <div id="to_render"></div>                     
                 </div>
             </div>
-        </article>
+        </article> -->
     </main>
 </body>
 

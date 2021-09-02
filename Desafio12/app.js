@@ -31,12 +31,13 @@ const PORT = 8080;
 
 // let upload = multer({ storage });
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static(__dirname + '/public'));
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
+// app.use(express.static(__dirname + '/public'));
+app.use(express.static('./public'));
 
-app.set('views', './views');
-app.set('view engine', 'ejs');
+// app.set('views', './views');
+// app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
 
@@ -50,9 +51,13 @@ app.get('/', (req, res) => {
     //     })
     // })
 
-    res.render('pages/index')
+    res.send('index.html')
 
 });
+
+app.get('/producto', (req, res) => {
+    res.json(producto);
+})
 
 // app.post('/productos/guardar', upload.single('thumbnail'), (req, res, next) => {
     
@@ -90,20 +95,21 @@ app.get('/', (req, res) => {
 // app.listen(PORT, () => {
 //     console.log(`Server iniciado en http://localhost:${PORT}/`)
 // });
-http.listen(PORT, () => {
-    console.log(`Server iniciado en http://localhost:${PORT}/`)
-});
+
 
 io.on('connection', (socket) => {
 
-    socket.emit('index', { producto })
+    socket.emit('message',{producto})
     
-    // socket.on('refresh', data => {
-    //     console.log('refresh 1')
-    //     const fnGetProducts = async() => { const product = await oProduct.getProducts(); return product}
-    //     const response = fnGetProducts().then( products => products )
-    //     console.log(response)
-    //     io.sockets.emit('response', response)
-    // })
+    socket.on('submit',(data)=>{
+       producto.push({title:data.title, price: data.price, id:socket.id})    
+       console.log(producto)    
+       io.emit("visualizar",{ producto })
+
+    })
 
 })
+
+http.listen(PORT, () => {
+    console.log(`Server iniciado en http://localhost:${PORT}/`)
+});
