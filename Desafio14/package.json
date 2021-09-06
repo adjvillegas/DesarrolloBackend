@@ -1,21 +1,29 @@
 {
-  "name": "Desafio12",
+  "name": "Desafio14",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.es6.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "watch": ".\\node_modules\\.bin\\tsc -w",
+    "startJS": "npx babel server.es6.js -o server.js",
+    "ServerES6toJS5": "nodemon --exec npm run startJS",
+    "ServerTStoJS5": "nodemon --exec npm run watch"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-preset-env": "^1.7.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "moment": "^2.29.1",
     "multer": "^1.4.3",
     "nodemon": "^2.0.12",
-    "socket.io": "^4.2.0"
+    "socket.io": "^4.2.0",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
   }
 }
