@@ -1,0 +1,28 @@
+{
+  "name": "TrabajoFinal_BackEnd",
+  "version": "1.0.0",
+  "description": "Repositorio para entrega de Trabajo Final del curso BackEnd en CoderHouse",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adjvillegas/TrabajoFinal_BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adjvillegas/TrabajoFinal_BackEnd/issues"
+  },
+  "homepage": "https://github.com/adjvillegas/TrabajoFinal_BackEnd#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.11",
+    "nodemon": "^2.0.12",
+    "sqlite3": "^5.0.2"
+  }
+}

@@ -1,0 +1,14 @@
+[
+	{
+		"0": {
+			"nombre": "Producto 2",
+			"descripcion": "producto de prueba postman 2",
+			"codigo": "AN1TT3S",
+			"foto": "NUEVA URL",
+			"precio": 170,
+			"stock": 101,
+			"id": "16311171505921"
+		},
+		"id": "16311333046740"
+	}
+]
