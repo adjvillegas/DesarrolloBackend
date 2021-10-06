@@ -1,5 +1,24 @@
 {
   "dependencies": {
-    "mysql": "^2.18.1"
-  }
+    "mysql": "^2.18.1",
+    "normalizr": "^3.6.1"
+  },
+  "name": "DesarrolloBackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adjvillegas/DesarrolloBackend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adjvillegas/DesarrolloBackend/issues"
+  },
+  "homepage": "https://github.com/adjvillegas/DesarrolloBackend#readme",
+  "description": ""
 }

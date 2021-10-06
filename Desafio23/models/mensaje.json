@@ -1,0 +1,35 @@
+[
+    {
+        "author": {
+            "id": "adj.villegas@gmail.com",
+            "nombre": "Andres",
+            "appellido": "Villegas",
+            "edad": "33",
+            "alias": "El buscador por google",
+            "avatar": "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/10_avatar-256.png"
+        },
+        "text": "Hola Como estan todos?"
+    },
+    {
+        "author": {
+            "id": "javichi_v@hotmail.com",
+            "nombre": "Javier",
+            "appellido": "Villegas",
+            "edad": "32",
+            "alias": "El inspector Modzilla",
+            "avatar": "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/1_avatar-256.png"
+        },
+        "text": "Bien y tu?"
+    },
+    {
+        "author": {
+            "id": "rmdelros_v@yahoo.com",
+            "nombre": "Mariana",
+            "appellido": "Vallejos",
+            "edad": "29",
+            "alias": "La defensora de Twitter",
+            "avatar": "https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/4_avatar-256.png"
+        },
+        "text": "Esto es estupendo!!.. me encanta esta pagina!"
+    }    
+]
