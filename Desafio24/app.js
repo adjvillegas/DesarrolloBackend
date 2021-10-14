@@ -21,9 +21,7 @@ app.use((req,res,next)=>{
     return next();
 })
 
-//localhost:6060/login?user=xxx&pass=456768
 
-   //User incorrecto  
 
 let count=0;
 app.get('/mem-count',(req,res)=>{
@@ -33,25 +31,11 @@ app.get('/mem-count',(req,res)=>{
 })
 
 app.post('/login',(req,res)=>{
-    console.log('aca')
+    
     const {user,password} = req.body;
 
-    console.log(`el user fue ${user} y el pass ${password}`)
-
 })
 
-/*
-fetch('/login',{
- method:'POST',
- headers: {
-    'content-type':'application/json'
- },
- body:JSON.stringify({user:'amy',pass:'1234})
-}).then( r => r.json()).then(e => {
-if (e.err == 2)
- console.log('password incorrecto')
-})
-*/
 
 app.get("/", (req, res) => {
   res.send("Express-session server");
