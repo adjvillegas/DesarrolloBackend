@@ -1,0 +1,22 @@
+{
+  "name": "desafio28",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "http": "*",
+    "nodemon": "^2.0.14",
+    "passport": "^0.5.0",
+    "passport-facebook": "^3.0.0"
+  }
+}
