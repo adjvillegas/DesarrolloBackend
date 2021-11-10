@@ -1,0 +1,19 @@
+{
+  "name": "Server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fork": "pm2 start index.js --name='Server1' --watch -- 8081 FORK",
+    "cluster": "pm2 start index.js --name='Server2' --watch -- 8082 CLUSTER"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "pm2": "^5.1.2"
+  }
+}
