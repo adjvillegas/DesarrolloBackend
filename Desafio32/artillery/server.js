@@ -1,4 +1,4 @@
-/ -------------- ARTILLERY (TEST DE CARGA) -------------------
+// / -------------- ARTILLERY (TEST DE CARGA) -------------------
 //https://medium.com/the-andela-way/scaling-out-with-node-clusters-1dca4a39a2a
 //npm i -g artillery
 //npm list -g | grep artillery
