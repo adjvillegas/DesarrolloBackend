@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(15, 15, 15);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(41, 140, 206);
+  text-align: center;
+}
+
+hr {
+  background-color: white;
+}
+
+#chatAuthor {
+  color: deepSkyBlue;
+}
+
+#chatDate {
+  color: orangeRed;
+}
+
+#chatText {
+  color: lawnGreen;
+}
+
+#chatAvatar {
+  max-width: 40px;
+}
+
+.errorText {
+  font-size: 2rem;
+  color: white;
+}

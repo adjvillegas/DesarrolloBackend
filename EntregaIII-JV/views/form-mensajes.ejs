@@ -1,0 +1,54 @@
+<section class="d-flex justify-content-center align-items-center flex-column">
+  <h1>Centro de mensajes</h1>
+  <h5 id="compresion"></h5>
+  <form class="bg-dark p-3 mb-4" action="/mensajes/guardar" method="POST">
+    <div class="form-row">
+      <div class="mb-2">
+        <input
+          class="form-control"
+          type="email"
+          name="email"
+          placeholder="Tu email"
+          required
+        />
+      </div>
+      <div class="mb-2">
+        <input
+          class="form-control"
+          type="text"
+          name="firstname"
+          placeholder="Tu nombre"
+        />
+      </div>
+      <div class="mb-2">
+        <input
+          class="form-control"
+          type="text"
+          name="lastname"
+          placeholder="Tu apellido"
+        />
+      </div>
+      <div class="mb-2">
+        <input
+          class="form-control"
+          type="text"
+          name="avatar"
+          placeholder="Url del avatar"
+        />
+        <hr />
+      </div>
+      <div id="messages"></div>
+      <div class="mt-2">
+        <input
+          class="form-control"
+          type="text"
+          name="text"
+          placeholder="Cuéntanos algo..."
+        />
+      </div>
+    </div>
+    <div class="d-grid gap-2">
+      <input type="submit" value="Enviar" class="btn btn-primary mt-3 mb-2" />
+    </div>
+  </form>
+</section>
