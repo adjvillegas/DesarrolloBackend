@@ -1,0 +1,20 @@
+{
+  "name": "Desafio42",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js --HOST=localhost: --PORT=9090",
+    "prd": "node index.js --HOST:https://backendherokujv.herokuapp.com/ --PORT=3030",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "yargs": "^17.3.0"
+  }
+}
